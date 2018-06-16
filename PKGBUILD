@@ -22,6 +22,10 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
+  0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
+  ipts.patch
   keyboards_and_covers.patch
   sdcard_reader.patch
   surfacedock.patch
@@ -66,6 +70,8 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
+
+>>>>>>> 248fa97f4ef4b377eef5a1aa7f0b2a5e3759ece2
   cat ../config - >.config <<END
 CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
@@ -156,6 +162,7 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+
 }
 
 _package-headers() {
