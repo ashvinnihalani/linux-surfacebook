@@ -163,6 +163,9 @@ _package() {
   sed "${_subst}" ../90-linux.hook |
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
+  touch /etc/NetworkManager/conf.d/30-mac-randomization.conf
+  echo -e "\n[device-mac-randomization]\nwifi.scan-rand-mac-address=no\n\n[connection-mac-randomization]\nethernet.cloned-mac-address=preserve\nwifi.cloned-mac-address=preserve\n" >> /etc/NetworkManager/conf.d/30-mac-randomization.conf
+
 }
 
 _package-headers() {
