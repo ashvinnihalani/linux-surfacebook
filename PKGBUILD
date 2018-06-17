@@ -3,11 +3,11 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-zen           # Build stock -zen kernel
+pkgbase=linux-custom           # Build stock -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.16
-_zenpatch=zen-4.16.13-d82f5185031cfe3009c376a9b7ade66a4fa218c3.diff
-pkgver=4.16.13
+_srcname=linux-4.17
+_zenpatch=zen-4.17.2-8dd5b69c442e4d4595af9dffe65df65251ec1649.diff
+pkgver=4.17.2
 pkgrel=2
 arch=('x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -22,10 +22,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch
   0003-ACPI-watchdog-Prefer-iTCO_wdt-always-when-WDAT-table.patch
-  ipts.patch
   keyboards_and_covers.patch
   sdcard_reader.patch
   surfacedock.patch
